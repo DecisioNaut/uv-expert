@@ -49,6 +49,8 @@ uv-expert/
 ├── SKILL.md                           # Main entry point (<500 lines)
 ├── README.md                          # This file
 ├── LICENSE                            # MIT License
+├── CHANGELOG.md                       # Version history
+├── VALIDATION.md                      # Compliance checklist
 └── references/                        # Detailed documentation
     ├── PROJECTS.md                    # Project management & workspaces
     ├── SCRIPTS_TOOLS.md              # Scripts with inline deps & CLI tools
