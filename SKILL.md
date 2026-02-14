@@ -80,222 +80,97 @@ uv help
 ### 1. Creating a Project
 
 ```bash
-# Create new project
-uv init my-project
-cd my-project
-
-# Initialize in existing directory
-mkdir existing-project && cd existing-project
-uv init
-
-# Create with specific Python version
-uv init --python 3.12 my-project
-
-# Create application vs library
-uv init --app my-app      # No build-system
-uv init --lib my-lib      # With build-system for packaging
-```
-
-**Project Structure Created:**
-```
-my-project/
-├── .gitignore
-├── .python-version
-├── README.md
-├── main.py (or src/my_project/__init__.py for libraries)
-└── pyproject.toml
+uv init my-project              # Create new project
+uv init                          # Initialize in existing directory
+uv init --python 3.12 my-app    # Specify Python version
+uv init --app my-app            # Application (no build-system)
+uv init --lib my-lib            # Library (with build-system)
 ```
 
 ### 2. Managing Dependencies
 
 ```bash
-# Add dependencies
-uv add requests
-uv add 'flask>=3.0'
-uv add pytest --dev
-
-# Add from git
-uv add git+https://github.com/user/repo
-
-# Add with extras
-uv add 'fastapi[all]'
-
-# Remove dependencies
-uv remove requests
-
-# Upgrade specific package
-uv lock --upgrade-package requests
-
-# Upgrade all packages
-uv lock --upgrade
+uv add requests                  # Add dependency
+uv add 'flask>=3.0' --dev       # Add dev dependency
+uv add git+https://github.com/user/repo  # From git
+uv remove requests               # Remove dependency
+uv lock --upgrade-package requests       # Upgrade specific
+uv lock --upgrade                # Upgrade all
 ```
 
 ### 3. Running Code
 
 ```bash
-# Run a script in project environment
-uv run main.py
-
-# Run a command
-uv run python -c "import requests; print(requests.__version__)"
-
-# Run with specific Python version
-uv run --python 3.11 main.py
-
-# Sync environment then run without uv
-uv sync
-source .venv/bin/activate  # macOS/Linux
-.venv\Scripts\activate     # Windows
-python main.py
+uv run main.py                   # Run in project environment
+uv run python -c "import requests"       # Run command
+uv sync && source .venv/bin/activate    # Manual activation
 ```
 
-### 4. Working with Scripts
+### 4. Scripts with Inline Dependencies
 
-```bash
-# Create script with inline metadata
-uv init --script my-script.py --python 3.12
-
-# Add dependencies to script
-uv add --script my-script.py requests rich
-
-# Run script (uv manages dependencies automatically)
-uv run my-script.py
-
-# Lock script dependencies
-uv lock --script my-script.py
-```
-
-**Example Script with Inline Metadata:**
+Create `script.py` with inline metadata:
 
 ```python
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.12"
-# dependencies = [
-#   "requests<3",
-#   "rich",
-# ]
+# dependencies = ["requests", "rich"]
 # ///
-
 import requests
-from rich.pretty import pprint
-
-resp = requests.get("https://api.github.com/repos/astral-sh/uv")
-pprint(resp.json())
+from rich import print
+print(requests.get("https://httpbin.org/json").json())
 ```
 
-### 5. Running and Installing Tools
+Run with: `uv run script.py` (dependencies auto-managed)
+
+### 5. Tools (CLI applications)
 
 ```bash
-# Run tool temporarily (uvx is alias for uv tool run)
-uvx ruff check .
-uvx --from httpie http https://example.com
-
-# Install tool permanently
-uv tool install ruff
-uv tool install 'mypy[faster-cache]'
-
-# Run with specific version
-uvx ruff@0.3.0 check .
-
-# Upgrade tools
-uv tool upgrade ruff
-uv tool upgrade --all
-
-# List installed tools
-uv tool list
-
-# Uninstall tool
-uv tool uninstall ruff
+uvx ruff check .                 # Run tool temporarily
+uv tool install ruff             # Install permanently
+uv tool list                     # List installed tools
 ```
 
-### 6. Managing Python Versions
+### 6. Python Version Management
 
 ```bash
-# Install Python versions
-uv python install 3.12
-uv python install 3.11 3.12 3.13
-
-# List available versions
-uv python list
-
-# Pin Python version for project
-uv python pin 3.12
-
-# Use specific Python for command
-uv run --python 3.11 main.py
-uv venv --python 3.12.0
-
-# Upgrade Python patch versions
-uv python upgrade 3.12
-uv python upgrade  # All versions
+uv python install 3.12           # Install Python version
+uv python list                   # List available versions
+uv python pin 3.12               # Pin for project
+uv run --python 3.11 script.py   # Use specific version
 ```
 
 ## Common Workflows
 
-### Migrating from pip
+### Migration
 
 ```bash
-# Convert requirements.txt to uv project
-uv init
-uv add -r requirements.txt
+# From pip requirements.txt
+uv init && uv add -r requirements.txt
 
-# Or use pip interface
-uv venv
+# From Poetry (pyproject.toml recognized automatically)
+uv init --no-readme && uv sync
+
+# Using pip interface
 uv pip install -r requirements.txt
 uv pip compile requirements.in -o requirements.txt
-uv pip sync requirements.txt
 ```
 
-### Migrating from Poetry
+### Lockfile Management
 
 ```bash
-# Convert poetry project
-uv init --no-readme  # In existing directory
-# Dependencies from pyproject.toml are automatically recognized
-uv sync
+uv lock                          # Create/update lockfile
+uv lock --upgrade-package requests       # Update specific package
+uv sync --locked                 # Install from lockfile (error if out of sync)
+uv sync --frozen                 # Install from lockfile (never update)
 ```
 
-### Creating a Lockfile
+### Export & Publishing
 
 ```bash
-# Create initial lockfile
-uv lock
-
-# Update lockfile
-uv lock --upgrade
-
-# Update specific package
-uv lock --upgrade-package requests
-
-# Validate lockfile is up-to-date
-uv lock --locked
-```
-
-### Exporting Dependencies
-
-```bash
-# Export to requirements.txt
-uv export --format requirements-txt > requirements.txt
-
-# Export without hashes
-uv export --format requirements-txt --no-hashes > requirements.txt
-
-# Export with dev dependencies
-uv export --format requirements-txt --all-extras --dev > requirements-dev.txt
-```
-
-### Building and Publishing
-
-```bash
-# Build distributions
-uv build
-
-# Publish to PyPI
-uv publish
-
-# Publish to TestPyPI
-uv publish --publish-url https://test.pypi.org/legacy/
+uv export > requirements.txt     # Export dependencies
+uv build                          # Build distributions
+uv publish                        # Publish to PyPI
 ```
 
 ## Advanced Features
@@ -379,8 +254,6 @@ linux = ["systemd-python; sys_platform == 'linux'"]
 
 ## Docker Integration
 
-### Basic Dockerfile
-
 ```dockerfile
 FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -393,64 +266,20 @@ COPY . .
 CMD ["uv", "run", "main.py"]
 ```
 
-### Optimized Multi-Stage Build
-
-```dockerfile
-# Build stage
-FROM python:3.12-slim AS builder
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
-
-WORKDIR /app
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project
-
-COPY . .
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --locked
-
-# Runtime stage
-FROM python:3.12-slim
-COPY --from=builder /app/.venv /app/.venv
-ENV PATH="/app/.venv/bin:$PATH"
-WORKDIR /app
-COPY --from=builder /app .
-CMD ["python", "main.py"]
-```
-
-See [references/INTEGRATIONS.md](references/INTEGRATIONS.md#docker) for more Docker patterns.
+See [references/INTEGRATIONS.md](references/INTEGRATIONS.md#docker) for multi-stage builds, caching, and optimization patterns.
 
 ## GitHub Actions Integration
 
 ```yaml
-name: CI
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
-        with:
-          version: "0.10.2"
-          enable-cache: true
-      
-      - name: Set up Python
-        run: uv python install
-      
-      - name: Install dependencies
-        run: uv sync --locked --all-extras --dev
-      
-      - name: Run tests
-        run: uv run pytest
+- uses: astral-sh/setup-uv@v7
+  with:
+    enable-cache: true
+- run: uv python install
+- run: uv sync --frozen --all-extras --dev
+- run: uv run pytest
 ```
 
-See [references/INTEGRATIONS.md](references/INTEGRATIONS.md#github-actions) for complete CI/CD examples.
+See [references/INTEGRATIONS.md](references/INTEGRATIONS.md#github-actions) for complete workflows, matrix testing, and caching strategies.
 
 ## Troubleshooting
 

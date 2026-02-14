@@ -50,7 +50,6 @@ uv-expert/
 ├── README.md                          # This file
 ├── LICENSE                            # MIT License
 ├── CHANGELOG.md                       # Version history
-├── VALIDATION.md                      # Compliance checklist
 └── references/                        # Detailed documentation
     ├── PROJECTS.md                    # Project management & workspaces
     ├── SCRIPTS_TOOLS.md              # Scripts with inline deps & CLI tools
