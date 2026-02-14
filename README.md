@@ -262,6 +262,7 @@ MIT License - See LICENSE file for details.
 - **Astral** for creating uv and advancing Python tooling
 - **Agent Skills** community for the specification framework
 - Documentation sourced from official uv docs and GitHub repository
+- Built with [skill-smith](https://github.com/DecisioNaut/skill-smith) for specification compliance
 
 ---
 

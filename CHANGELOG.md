@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Initial release of uv-expert agent skill
+- Created with [skill-smith](https://github.com/DecisioNaut/skill-smith) to ensure compliance with Agent Skills specification v1.0
 - Main SKILL.md file with comprehensive uv guidance (566 lines)
 - Six detailed reference files totaling 5,731 lines:
   - PROJECTS.md: Project management, dependencies, lockfiles, and workspaces
