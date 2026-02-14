@@ -488,7 +488,12 @@ For comprehensive documentation on specific topics:
 - **[references/PYTHON_MANAGEMENT.md](references/PYTHON_MANAGEMENT.md)** - Python installation, versions, discovery
 - **[references/PIP_INTERFACE.md](references/PIP_INTERFACE.md)** - pip compatibility, migration, uv pip commands
 - **[references/INTEGRATIONS.md](references/INTEGRATIONS.md)** - Docker, CI/CD, pre-commit, dependency bots
-- **[references/ADVANCED.md](references/ADVANCED.md)** - Resolution strategies, authentication, caching, troubleshooting
+- **[references/RESOLUTION.md](references/RESOLUTION.md)** - Resolution strategies, dependency overrides and constraints
+- **[references/AUTHENTICATION.md](references/AUTHENTICATION.md)** - HTTP, Git, and third-party service authentication
+- **[references/CACHING_PERFORMANCE.md](references/CACHING_PERFORMANCE.md)** - Caching mechanisms and performance tuning
+- **[references/PLATFORM_INDEXES.md](references/PLATFORM_INDEXES.md)** - Platform-specific dependencies and custom indexes
+- **[references/DEBUG_TROUBLESHOOTING.md](references/DEBUG_TROUBLESHOOTING.md)** - Debug tools and issue resolution
+- **[references/INTERNALS.md](references/INTERNALS.md)** - Internals, best practices, and common patterns
 
 ## Command Quick Reference
 

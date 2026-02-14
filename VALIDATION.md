@@ -12,15 +12,20 @@ uv-expert/
 ├── SKILL.md                       ✅ Main skill file (14.5 KB, 566 lines)
 ├── VALIDATION.md                  ✅ Compliance checklist (217 lines)
 └── references/                    ✅ Detailed documentation
-    ├── ADVANCED.md                ✅ 26.8 KB, 1342 lines
-    ├── INTEGRATIONS.md            ✅ 18.9 KB, 1026 lines
-    ├── PIP_INTERFACE.md           ✅ 14.7 KB, 738 lines
     ├── PROJECTS.md                ✅ 19.5 KB, 949 lines
+    ├── SCRIPTS_TOOLS.md           ✅ 17.5 KB, 890 lines
     ├── PYTHON_MANAGEMENT.md       ✅ 15.8 KB, 786 lines
-    └── SCRIPTS_TOOLS.md           ✅ 17.5 KB, 890 lines
+    ├── PIP_INTERFACE.md           ✅ 14.7 KB, 738 lines
+    ├── INTEGRATIONS.md            ✅ 18.9 KB, 1026 lines
+    ├── RESOLUTION.md              ✅ 4.5 KB, 222 lines
+    ├── AUTHENTICATION.md          ✅ 4.6 KB, 219 lines
+    ├── CACHING_PERFORMANCE.md     ✅ 4.0 KB, 224 lines
+    ├── PLATFORM_INDEXES.md        ✅ 3.1 KB, 155 lines
+    ├── DEBUG_TROUBLESHOOTING.md   ✅ 5.8 KB, 290 lines
+    └── INTERNALS.md               ✅ 6.9 KB, 268 lines
 ```
 
-**Total Documentation**: ~130 KB, 5,731 reference lines + 566 main file lines
+**Total Documentation**: ~120 KB, 5,767 reference lines + 566 main file lines
 
 ## ✅ Agent Skills Specification Compliance
 
@@ -111,17 +116,45 @@ metadata:                          ✅ Additional metadata
 - Dependency bots (Dependabot, Renovate)
 - Cloud platforms (AWS, GCP, Azure)
 
-#### ADVANCED.md ✅
+#### RESOLUTION.md ✅
 - Resolution strategies (highest, lowest, lowest-direct)
-- Dependency overrides and constraints
-- Authentication (HTTP, Git, TLS, third-party)
-- Caching (location, management, CI)
-- Performance optimization
-- Platform-specific dependencies
-- Custom indexes
-- Debug and introspection
-- Comprehensive troubleshooting
-- Internals (resolver, lockfile, performance)
+- Dependency overrides (force specific versions)
+- Dependency constraints (additional restrictions)
+- Per-dependency resolution control
+
+#### AUTHENTICATION.md ✅
+- HTTP authentication (netrc, environment variables)
+- Git authentication (SSH keys, HTTPS tokens, GitLab CI)
+- Third-party services (JFrog, Azure, Google)
+- TLS/SSL certificates and client certs
+- Credential security best practices
+
+#### CACHING_PERFORMANCE.md ✅
+- Cache location, structure, and management
+- CI/CD cache optimization
+- Link modes (copy, hardlink, symlink, clone)
+- Bytecode compilation
+- Network timeout and concurrent downloads
+
+#### PLATFORM_INDEXES.md ✅
+- Platform-specific dependencies and markers
+- Conditional dependencies
+- Multi-platform lockfiles
+- Custom package indexes and priority
+
+#### DEBUG_TROUBLESHOOTING.md ✅
+- Verbose output and dry runs
+- Resolution tree and dependency inspection
+- Resolution, build, and network issues
+- Cache corruption and lock file conflicts
+- Python version and virtual environment troubleshooting
+
+#### INTERNALS.md ✅
+- PubGrub resolver algorithm
+- Lockfile format and virtual environment structure
+- Package installation steps
+- Best practices (development, production, CI/CD, security)
+- Common patterns (monorepos, microservices, plugins)
 
 ## ✅ Quality Checks
 

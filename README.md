@@ -57,7 +57,12 @@ uv-expert/
     ├── PYTHON_MANAGEMENT.md          # Installing & managing Python versions
     ├── PIP_INTERFACE.md              # pip compatibility & migration
     ├── INTEGRATIONS.md               # Docker, CI/CD, pre-commit, IDEs
-    └── ADVANCED.md                    # Resolution strategies, auth, caching
+    ├── RESOLUTION.md                 # Resolution strategies, overrides, constraints
+    ├── AUTHENTICATION.md             # HTTP, Git, third-party auth
+    ├── CACHING_PERFORMANCE.md        # Caching & performance tuning
+    ├── PLATFORM_INDEXES.md           # Platform deps & custom indexes
+    ├── DEBUG_TROUBLESHOOTING.md      # Debug tools & issue resolution
+    └── INTERNALS.md                  # Internals, best practices, patterns
 ```
 
 ## When to Use This Skill
@@ -134,16 +139,40 @@ The agent should invoke this skill when discussions involve:
 - Dependency bots (Dependabot, Renovate)
 - Cloud platforms (AWS Lambda, GCP, Azure)
 
-#### ADVANCED.md
+#### RESOLUTION.md
 - Resolution strategies (highest, lowest, lowest-direct)
 - Dependency overrides and constraints
-- Authentication (HTTP, Git, TLS, third-party services)
-- Caching strategies and optimization
+- Per-dependency resolution control
+
+#### AUTHENTICATION.md
+- HTTP authentication (netrc, environment variables)
+- Git authentication (SSH, HTTPS tokens)
+- Third-party services (JFrog, Azure, Google)
+- TLS/SSL certificates and security
+
+#### CACHING_PERFORMANCE.md
+- Cache location and structure
+- Cache management and CI/CD optimization
+- Link modes and bytecode compilation
+- Network tuning and concurrent downloads
+
+#### PLATFORM_INDEXES.md
 - Platform-specific dependencies
+- Environment markers
 - Custom package indexes
-- Debug and introspection
-- Troubleshooting guide
-- Internals (resolver, lockfile format, performance)
+- Multi-platform lockfiles
+
+#### DEBUG_TROUBLESHOOTING.md
+- Verbose output and dry runs
+- Resolution tree and dependency inspection
+- Common problems and solutions
+- Virtual environment troubleshooting
+
+#### INTERNALS.md
+- PubGrub resolver algorithm
+- Lockfile format and structure
+- Best practices (development, production, CI/CD)
+- Common patterns (monorepos, microservices)
 
 ## Quick Examples
 
