@@ -205,7 +205,7 @@ CMD ["uv", "run", "main.py"]
 - **Name**: uv-expert
 - **Version**: 1.0.0
 - **License**: MIT
-- **Created**: 2024
+- **Created**: 2026
 - **uv Version Coverage**: 0.5.x - 0.10.x
 - **Skill Level**: Level 2 (Main file + references)
 

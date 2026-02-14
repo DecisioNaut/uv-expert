@@ -213,6 +213,6 @@ The `uv-expert` skill is:
 
 ---
 
-**Validation Date**: 2024-02-14
+**Validation Date**: 2026-02-14
 **Validator**: skill-smith methodology
 **Result**: ✅ PASS - All requirements met
