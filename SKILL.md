@@ -1,32 +1,11 @@
 ---
 name: uv-expert
 description: Master complex Python project management with uv - an extremely fast Python package and project manager. Handle projects, scripts, tools, Python versions, workspaces, Docker integration, CI/CD, pip interface, dependency resolution, and advanced workflows. Use when working with uv, migrating from pip/poetry/pipenv, managing Python projects, or when users mention uv, uvx, pyproject.toml, uv.lock, virtual environments, or complex dependency management.
-license: MIT
-compatibility: Requires uv (curl -LsSf https://astral.sh/uv/install.sh | sh), supports macOS, Linux, and Windows
-metadata:
-  author: uv-expert contributors
-  version: "1.0.0"
-  tags: python, uv, package-manager, dependency-management, project-management, docker, ci-cd
 ---
 
 # uv Expert
 
-Comprehensive guidance for mastering uv, the extremely fast Python package and project manager written in Rust. This skill covers complex use cases including project management, scripts, tools, workspaces, Docker integration, CI/CD pipelines, and advanced dependency resolution strategies.
-
-## When to Use This Skill
-
-Activate this skill when you need to:
-
-- **Manage Python projects** with uv (create, configure, dependencies, lockfiles, workspaces)
-- **Run scripts** with inline dependency metadata (PEP 723)
-- **Install and use tools** (uvx, tool management)
-- **Manage Python versions** (install, pin, upgrade multiple versions)
-- **Migrate from pip, poetry, or pipenv** to uv
-- **Set up CI/CD pipelines** with GitHub Actions, GitLab CI, or other platforms
-- **Containerize applications** using uv in Docker
-- **Resolve complex dependency conflicts** with advanced resolution strategies
-- **Work with monorepos** using uv workspaces
-- **Use the pip interface** for drop-in compatibility
+Comprehensive guidance for mastering uv, the extremely fast Python package and project manager written in Rust.
 
 ## Core Concepts
 
