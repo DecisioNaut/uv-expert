@@ -29,39 +29,47 @@ This skill can be used by AI agents that support the Agent Skills specification.
 
 ### For GitHub Copilot
 
-1. Copy this directory to your skills folder:
+1. Copy the skill folder to your skills directory:
    ```bash
-   cp -r uv-expert ~/.copilot/skills/
+   # From the repository root
+   cp -r uv-expert/uv-expert ~/.copilot/skills/
+   ```
+
+   Or if cloning directly:
+   ```bash
+   git clone <repo-url> /tmp/uv-expert-repo
+   cp -r /tmp/uv-expert-repo/uv-expert/uv-expert ~/.copilot/skills/uv-expert
    ```
 
 2. The skill will be automatically detected when discussing Python packaging, uv, or related topics.
 
 ### For Other AI Agents
 
-Ensure your agent can read:
-- `SKILL.md` - Main skill file with quick reference
-- `references/` - Detailed documentation on specific topics
+Ensure your agent can read the skill structure:
+- `~/.copilot/skills/uv-expert/SKILL.md` - Main skill file with quick reference
+- `~/.copilot/skills/uv-expert/references/` - Detailed documentation on specific topics
 
-## Skill Structure
+## Repository Structure
 
 ```
-uv-expert/
-├── SKILL.md                           # Main entry point (<500 lines)
+uv-expert/                             # Repository root
+├── uv-expert/                         # Skill package (copy this to ~/.copilot/skills/)
+│   ├── SKILL.md                      # Main entry point (<500 lines)
+│   └── references/                   # Detailed documentation
+│       ├── PROJECTS.md               # Project management & workspaces
+│       ├── SCRIPTS_TOOLS.md          # Scripts with inline deps & CLI tools
+│       ├── PYTHON_MANAGEMENT.md      # Installing & managing Python versions
+│       ├── PIP_INTERFACE.md          # pip compatibility & migration
+│       ├── INTEGRATIONS.md           # Docker, CI/CD, pre-commit, IDEs
+│       ├── RESOLUTION.md             # Resolution strategies, overrides, constraints
+│       ├── AUTHENTICATION.md         # HTTP, Git, third-party auth
+│       ├── CACHING_PERFORMANCE.md    # Caching & performance tuning
+│       ├── PLATFORM_INDEXES.md       # Platform deps & custom indexes
+│       ├── DEBUG_TROUBLESHOOTING.md  # Debug tools & issue resolution
+│       └── INTERNALS.md              # Internals, best practices, patterns
 ├── README.md                          # This file
 ├── LICENSE                            # MIT License
-├── CHANGELOG.md                       # Version history
-└── references/                        # Detailed documentation
-    ├── PROJECTS.md                    # Project management & workspaces
-    ├── SCRIPTS_TOOLS.md              # Scripts with inline deps & CLI tools
-    ├── PYTHON_MANAGEMENT.md          # Installing & managing Python versions
-    ├── PIP_INTERFACE.md              # pip compatibility & migration
-    ├── INTEGRATIONS.md               # Docker, CI/CD, pre-commit, IDEs
-    ├── RESOLUTION.md                 # Resolution strategies, overrides, constraints
-    ├── AUTHENTICATION.md             # HTTP, Git, third-party auth
-    ├── CACHING_PERFORMANCE.md        # Caching & performance tuning
-    ├── PLATFORM_INDEXES.md           # Platform deps & custom indexes
-    ├── DEBUG_TROUBLESHOOTING.md      # Debug tools & issue resolution
-    └── INTERNALS.md                  # Internals, best practices, patterns
+└── CHANGELOG.md                       # Version history
 ```
 
 ## When to Use This Skill

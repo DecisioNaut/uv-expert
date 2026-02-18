@@ -5,6 +5,18 @@ All notable changes to the uv-expert agent skill will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-02-18
+
+### Changed
+- Reorganized structure to comply with skill-creator recommendations
+- Moved SKILL.md and references/ into uv-expert/ subdirectory for proper skill packaging
+- Updated README.md with clearer installation instructions for the nested structure
+- Enhanced documentation of repository structure vs. skill package
+
+### Improved
+- Installation guide now explicitly shows which folder to copy to ~/.copilot/skills/
+- Repository structure diagram clearly separates repository metadata from skill content
+
 ## [1.0.0] - 2026-02-14
 
 ### Added
